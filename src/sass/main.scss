@@ -1,0 +1,28 @@
+@import "bourbon";
+@import "neat";
+
+main {
+  @include outer-container;
+  aside { @include span-columns(5); }
+  article {
+    @include span-columns(7);
+    font-size: 30px;
+    .square, .square-annotation {
+      text-align: center;
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      padding: 10px;
+    }
+    .row-even {
+      .square:nth-child(2n) {
+        background: #ccc;
+      }
+    }
+    .row-odd {
+      .square:nth-child(2n+1) {
+        background: #ccc;
+      }
+    }
+  }
+}
