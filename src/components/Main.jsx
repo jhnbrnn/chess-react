@@ -1,6 +1,6 @@
 var React = require('react');
-var Chessboard = require('./Chessboard');
-var ChessboardDetails = require('./ChessboardDetails');
+var Chessboard = require('./Chessboard.jsx');
+var ChessboardDetails = require('./ChessboardDetails.jsx');
 
 var Main = React.createClass({
   render: function() {

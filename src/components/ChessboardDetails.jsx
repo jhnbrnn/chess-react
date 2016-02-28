@@ -1,6 +1,6 @@
 var React = require('react');
-var NewMoveForm = require('./NewMoveForm');
-var OldMovesList = require('./OldMovesList');
+var NewMoveForm = require('./NewMoveForm.jsx');
+var OldMovesList = require('./OldMovesList.jsx');
 
 var ChessboardDetails = React.createClass({
   render: function() {
