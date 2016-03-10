@@ -4,7 +4,7 @@
   "description": "Chess app using React",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base public --port 3030"
+    "start": "webpack-dev-server --inline --hot --content-base public --port 3030"
   },
   "author": "John Brennan <john@jhnbrnn.com> (http://jhnbrnn.com)",
   "license": "MIT",

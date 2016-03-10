@@ -1,18 +1,77 @@
 var React = require('react');
 
+var ChessMap= {
+  'black': {
+    'K': '&#9818;',
+    'Q': '&#9819;',
+    'B': '&#9821;',
+    'N': '&#9822;',
+    'R': '&#9820;',
+    'p': '&#9823;'
+  },
+  'white': {
+    'K': '&#9812;',
+    'Q': '&#9813;',
+    'B': '&#9815;',
+    'N': '&#9816;',
+    'R': '&#9814;',
+    'p': '&#9817;'
+  }
+};
+
+/**
+ * Expect rankPieces: [0, 0, 0, 'wp', 'bB', 0, 0, 0]
+ */
+function renderRank(rankNum, rankPieces) {
+  var rankClass;
+  if (rankNum % 2 === 0) {
+    rankClass = 'row-even';
+  } else {
+    rankClass = 'row-odd';
+  }
+
+  var squaresMarkup = rankPieces.map(function(piece) {
+    return renderSquare(piece);
+  });
+
+  return (
+    <span className={rankClass}>
+      <span className="square-annotation">{rankNum}</span>
+      {squaresMarkup}
+    </span>
+  );
+};
+
+function renderSquare(pieceInSquare) {
+  var markup = '';
+  if (typeof pieceInSquare === 'number') {
+    markup = '&nbsp;'
+  } else {
+    markup = ChessMap[pieceInSquare.color][pieceInSquare.piece];
+  }
+
+  return <span className="square" dangerouslySetInnerHTML={{__html: markup}}></span>;
+}
+
 var Chessboard = React.createClass({
   render: function() {
     return (
       <article className="width-7">
-        <span className="row-even"><span className="square-annotation">8</span><span className="square">&#9820;</span><span className="square">&#9822;</span><span className="square">&#9821;</span><span className="square">&#9819;</span><span className="square">&#9818;</span><span className="square">&#9821;</span><span className="square">&#9822;</span><span className="square">&#9820;</span></span><br />
-        <span className="row-odd"><span className="square-annotation">7</span><span className="square">&#9823;</span><span className="square">&#9823;</span><span className="square">&#9823;</span><span className="square">&#9823;</span><span className="square">&#9823;</span><span className="square">&#9823;</span><span className="square">&#9823;</span><span className="square">&#9823;</span></span><br />
-        <span className="row-even"><span className="square-annotation">6</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span></span><br />
-        <span className="row-odd"><span className="square-annotation">5</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span></span><br />
-        <span className="row-even"><span className="square-annotation">4</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span></span><br />
-        <span className="row-odd"><span className="square-annotation">3</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span><span className="square">&nbsp;</span></span><br />
-        <span className="row-even"><span className="square-annotation">2</span><span className="square">&#9817;</span><span className="square">&#9817;</span><span className="square">&#9817;</span><span className="square">&#9817;</span><span className="square">&#9817;</span><span className="square">&#9817;</span><span className="square">&#9817;</span><span className="square">&#9817;</span></span><br />
-        <span className="row-odd"><span className="square-annotation">1</span><span className="square">&#9814;</span><span className="square">&#9816;</span><span className="square">&#9815;</span><span className="square">&#9813;</span><span className="square">&#9812;</span><span className="square">&#9815;</span><span className="square">&#9816;</span><span className="square">&#9814;</span></span><br />
-        <span className="row-annotation"><span className="square-annotation">&nbsp;</span><span className="square">A</span><span className="square">B</span><span className="square">C</span><span className="square">D</span><span className="square">E</span><span className="square">F</span><span className="square">G</span><span className="square">H</span></span>
+        {renderRank(8, this.props.data[7])}
+        <br />
+        {renderRank(7, this.props.data[6])}
+        <br />
+        {renderRank(6, this.props.data[5])}
+        <br />
+        {renderRank(5, this.props.data[4])}
+        <br />
+        {renderRank(4, this.props.data[3])}
+        <br />
+        {renderRank(3, this.props.data[2])}
+        <br />
+        {renderRank(2, this.props.data[1])}
+        <br />
+        {renderRank(1, this.props.data[0])}
       </article>
     );
   }
