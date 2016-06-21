@@ -1,4 +1,5 @@
-var path = require('path');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
   entry: './src/App.jsx',
@@ -16,5 +17,10 @@ module.exports = {
         presets: ['es2015', 'react']
       }
     }]
-  }
-};
+  },
+  // plugins: [
+  //   new webpack.optimize.DedupePlugin(),
+  //   new webpack.optimize.UglifyJsPlugin()
+  // ],
+  devtool: 'source-map'
+}
