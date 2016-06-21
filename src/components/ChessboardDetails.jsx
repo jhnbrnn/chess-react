@@ -1,16 +1,12 @@
-var React = require('react');
-var NewMoveForm = require('./NewMoveForm.jsx');
-var OldMovesList = require('./OldMovesList.jsx');
+let React = require('react')
+let NewMoveForm = require('./NewMoveForm.jsx')
+let OldMovesList = require('./OldMovesList.jsx')
 
-var ChessboardDetails = React.createClass({
-  render: function() {
-    return (
-      <aside className="width-5">
-        <NewMoveForm />
-        <OldMovesList />
-      </aside>
-    );
-  }
-});
+const ChessboardDetails = ({ board, history, onSubmitMove }) => (
+  <aside className='width-5'>
+    <NewMoveForm onSubmitMove={onSubmitMove} board={board} />
+    <OldMovesList history={history} />
+  </aside>
+)
 
-module.exports = ChessboardDetails;
+module.exports = ChessboardDetails

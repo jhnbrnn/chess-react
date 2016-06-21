@@ -1,66 +1,14 @@
-var React = require('react');
-var Chessboard = require('./Chessboard.jsx');
-var ChessboardDetails = require('./ChessboardDetails.jsx');
+let React = require('react')
+let ChessboardContainer = require('../containers/ChessboardContainer.jsx')
+let DetailsContainer = require('../containers/DetailsContainer.jsx')
 
-var Main = React.createClass({
-  getInitialState() {
-      return {
-        pieces: [
-          [
-            {color: 'white', piece: 'R'},
-            {color: 'white', piece: 'N'},
-            {color: 'white', piece: 'B'},
-            {color: 'white', piece: 'K'},
-            {color: 'white', piece: 'Q'},
-            {color: 'white', piece: 'B'},
-            {color: 'white', piece: 'N'},
-            {color: 'white', piece: 'R'},
-          ],
-          [
-            {color: 'white', piece: 'p'},
-            {color: 'white', piece: 'p'},
-            {color: 'white', piece: 'p'},
-            {color: 'white', piece: 'p'},
-            {color: 'white', piece: 'p'},
-            {color: 'white', piece: 'p'},
-            {color: 'white', piece: 'p'},
-            {color: 'white', piece: 'p'},
-          ],
-          [0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0],
-          [
-            {color: 'black', piece: 'p'},
-            {color: 'black', piece: 'p'},
-            {color: 'black', piece: 'p'},
-            {color: 'black', piece: 'p'},
-            {color: 'black', piece: 'p'},
-            {color: 'black', piece: 'p'},
-            {color: 'black', piece: 'p'},
-            {color: 'black', piece: 'p'},
-          ],
-          [
-            {color: 'black', piece: 'R'},
-            {color: 'black', piece: 'N'},
-            {color: 'black', piece: 'B'},
-            {color: 'black', piece: 'K'},
-            {color: 'black', piece: 'Q'},
-            {color: 'black', piece: 'B'},
-            {color: 'black', piece: 'N'},
-            {color: 'black', piece: 'R'},
-          ],
-        ]
-      };
-  },
-  render: function() {
-    return (
-      <main>
-        <Chessboard data={this.state.pieces} />
-        <ChessboardDetails />
-      </main>
-    );
-  }
-});
+const Main = function () {
+  return (
+    <main>
+      <ChessboardContainer />
+      <DetailsContainer />
+    </main>
+  )
+}
 
-module.exports = Main;
+module.exports = Main
